@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+  - cloudflared.yaml   # Quick tunnel de Cloudflare: URL pública trycloudflare.com
 # Cada cambio en index.html genera un ConfigMap con hash nuevo,
 # lo que fuerza un rollout de los pods automáticamente.
 configMapGenerator:

@@ -10,6 +10,7 @@ apps/hola-gitops/      # Manifiestos de la app (Kustomize)
   kustomization.yaml
   deployment.yaml      # nginx sin root, FS read-only, límites de recursos
   service.yaml
+  cloudflared.yaml     # Túnel Cloudflare (sin abrir puertos) para ver la página desde cualquier lado
 argocd/
   hola-gitops.yaml     # Definición de la Application en ArgoCD
 ```
@@ -19,6 +20,14 @@ argocd/
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/TU-USUARIO/argocd-demo/main/argocd/hola-gitops.yaml
 ```
+
+## Ver la página
+
+```bash
+kubectl logs -n demo deploy/cloudflared | grep -o 'https://[a-z0-9-]*\.trycloudflare\.com'
+```
+
+> La URL cambia si el pod de cloudflared se reinicia. Para URL fija se necesita un *named tunnel* con dominio en Cloudflare.
 
 ## Pruebas
 
