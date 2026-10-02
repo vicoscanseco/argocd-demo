@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     # CAMBIA TU-USUARIO por tu usuario de GitHub
-    repoURL: https://github.com/TU-USUARIO/argocd-demo.git
+    repoURL: https://github.com/vicoscanseco/argocd-demo.git
     targetRevision: main
     path: apps/hola-gitops
   destination:
